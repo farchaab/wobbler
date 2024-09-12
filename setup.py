@@ -1,3 +1,4 @@
+import os
 from setuptools import setup, find_packages
 
 
@@ -12,6 +13,17 @@ def get_data_files():
     return data_files
 
 
+def get_version():
+    with open(
+        os.path.join(
+            os.path.dirname(os.path.realpath(__file__)),
+            "wobbler",
+            "wobbler.version",
+        )
+    ) as f:
+        return f.readline().strip()
+
+
 setup(
     name="wobbler",
     packages=find_packages(),
@@ -20,6 +32,7 @@ setup(
     description="Get degenerate sites from primer alignments ",
     long_description=get_description(),
     long_description_content_type="text/markdown",
+    version=get_version(),
     author="Farid Chaabane",
     author_email="farid.chaabane@chuv.ch",
     data_files=get_data_files(),

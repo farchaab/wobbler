@@ -1,8 +1,24 @@
 import sys
+import os
 from Bio import Align
 
+
+def get_version():
+    with open(
+        os.path.join(
+            os.path.dirname(os.path.realpath(__file__)),
+            "wobbler.version",
+        )
+    ) as f:
+        return f.readline().strip()
+
+
 if len(sys.argv) != 2:
-    exit("Usage: wobbler.py <alingment>")
+    exit(
+        f"""\twobbler v{get_version()}
+        Usage: wobbler primers.aln
+        """
+    )
 
 # wobble letters from https://www.biosearchtech.com/support/faqs/custom-oligonucleotides-modifications/what-are-wobbles
 wobble = {

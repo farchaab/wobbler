@@ -50,3 +50,6 @@ def main():
                 l[i] = "+".join(tmp)
 
     return "".join([wobble[val] if "+" in val else val for val in l.values()])
+
+if __name__ == "__main__":
+    main()
